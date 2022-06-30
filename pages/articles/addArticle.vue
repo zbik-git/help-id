@@ -7,19 +7,19 @@
 
             <div class="flex space-x-4 px-2 py-4 border-2 border-amber-500">
                 <label for="title">Title</label><br>
-                <input class="" type="text" id="title" :v-model="formData.title"><br>
+                <input class="" type="text" id="title" v-model="formData.title"><br>
 
             </div>
             
             <div class="flex space-x-4 px-2 py-4 border-2 border-amber-500">
                 <label for="category">Title</label><br>
-                <input class="" type="text" id="category" :v-model="formData.categor"><br>
+                <input class="" type="text" id="category" v-model="formData.category"><br>
 
             </div>
             
             <div class="flex space-x-4 px-2 py-4 border-2 border-amber-500">
                 <label for="content">Content</label><br>
-                <textarea placeholder="Content" :v-model="formData.content">
+                <textarea placeholder="Content" v-model="formData.content">
                 </textarea>
             </div>
 
@@ -39,7 +39,7 @@ const formData = reactive({
 })
 
 const addArticle = async ()=> {
-    await useFetch('api/articles/addArticle', {
+    await useFetch('/api/articles/addArticle', {
         method: 'POST',
         body: formData
     })
