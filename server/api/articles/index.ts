@@ -3,9 +3,10 @@
 
 
 
-export default async (req, res) => {
-    const articles = await req.db.articles.findMany()
+export default eventHandler(async (event) => {
+    const articles = await event['db'].articles.findMany()
+    
     return{
         articlesList: articles
     }  
-}
+})
