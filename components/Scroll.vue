@@ -1,5 +1,5 @@
 <template>
-    <main class="w-11/12 mx-auto py-5 mb-10">
+    <main class="w-11/12 mx-auto py-20 mb-10">
         <article class="relative flex mb-2">
             <div class="w-3/4">
                 <h1 class="text-xl">
