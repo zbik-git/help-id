@@ -11,7 +11,10 @@ datasource db {
 }
 
 
-Model Articles {
-  id Int
+model Articles {
+  id Int @default(autoincrement()) @id
+  title String
+  content String
+  category String
   
 }
