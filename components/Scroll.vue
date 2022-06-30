@@ -1,6 +1,6 @@
 <template>
     <main class="w-11/12 mx-auto py-20 mb-10">
-        <article class="relative flex mb-2">
+        <article class="relative flex pb-40">
             <div class="w-3/4">
                 <h1 class="text-xl">
                     Help
@@ -38,35 +38,38 @@
 
 <script setup>
 
+const route = useRoute()
 const headers = [
     'Programowanie menu',
     'Dodanie kategorii',
     'Dodanie produktów',
     'Konfiguracja wydruków',
 ];
-
 const currentSection = ref('');
 
-onMounted(() => {
-    const observer = new IntersectionObserver(
+function observerFn () {
+     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
                 // entry.target.classList.toggle("active", entry.isIntersecting)
                 if (entry.intersectionRatio > 0) {
                     currentSection.value = entry.target.getAttribute('id')
                 }
-        })
-    },
+            })
+        },
     {
-        rootMargin: '0px 0px -80% 0px',
-    }
-    
-    )
+        rootMargin: '0px 0px -75% 0px',
+    })
+
     document.querySelectorAll('article h2').forEach((section) => {
         observer.observe(section)
     })
-    
-})
+}
+
+
+onMounted(observerFn)
+watch(route, observerFn)
+
 
 
 

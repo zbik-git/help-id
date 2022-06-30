@@ -1,5 +1,3 @@
 <template>
-   <div>
-    homepage
-   </div>
+    <Hero />
 </template>

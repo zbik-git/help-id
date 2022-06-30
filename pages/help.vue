@@ -3,8 +3,8 @@
     <br>
     <br>
     <br>
-        <h1 class="text-xl">
-            About page 
+        <h1 class="text-xl color-amber">
+            Help
         </h1>
 </div>
 </template>

@@ -1,11 +1,12 @@
 <template>
 
+<div class="">
   <TheHeader />
-  <div>
-    <main>
-      <Hero />
-      <slot />
-    </main>
-  </div>
+  <slot>
+
+  </slot>
+
+</div>
+
   
 </template>
