@@ -8,7 +8,7 @@
                 <section v-for="(header, index) in headers" 
                 :key="header">
                 <h2 :id="index" class="text-xl pt-4">{{ header }}</h2>
-                <p>
+                <p @mouseover="observerFn()">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni aut eaque enim cumque, aliquam delectus quaerat aperiam voluptatem. Quo nulla magni numquam facere facilis eum cupiditate tempora cum tempore porro.
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, harum distinctio? Natus fuga iste officiis odio cumque unde nihil facere aspernatur tempore incidunt quibusdam velit, suscipit ad iusto nobis iure eaque blanditiis. Repellat architecto, quae esse dicta unde dignissimos vitae voluptatibus et reiciendis recusandae blanditiis totam eos, possimus ut incidunt dolorem nemo! Odio ea esse ipsum, aperiam asperiores consequatur, voluptas reiciendis ut nobis dicta ipsam non quam animi, quia earum sequi.
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio adipisci, tempora error assumenda autem aliquid! Ad sequi harum culpa modi maiores. Ratione aliquam voluptatem assumenda consequuntur numquam enim distinctio architecto!
@@ -52,8 +52,10 @@ function observerFn () {
         (entries) => {
             entries.forEach((entry) => {
                 // entry.target.classList.toggle("active", entry.isIntersecting)
+             
                 if (entry.intersectionRatio > 0) {
                     currentSection.value = entry.target.getAttribute('id')
+                    console.log(entry.target.getAttribute('id'))
                 }
             })
         },
@@ -67,8 +69,15 @@ function observerFn () {
 }
 
 
-onMounted(observerFn)
-watch(route, observerFn)
+//onMounted(observerFn)
+
+
+// watch(route.query, () => {
+//     observerFn()
+    
+// })
+
+
 
 
 

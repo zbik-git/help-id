@@ -59,8 +59,11 @@ const articles = ref('')
 
 const getArticles = async () => {
     const resp = await useFetch("/api/articles")
-    articles.value = resp}
+    articles.value = resp
+}
 
-onMounted(getArticles())
+
+onBeforeUpdate(getArticles())
+
 
 </script>
