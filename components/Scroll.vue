@@ -1,5 +1,5 @@
 <template>
-    <main class="w-11/12 mx-auto py-20 mb-10">
+    <main class="w-11/12 mx-auto py-20">
         <article class="relative flex pb-40">
             <div class="w-3/4">
                 <h1 class="text-xl">
@@ -7,7 +7,7 @@
                 </h1>
                 <section v-for="(header, index) in headers" 
                 :key="header">
-                <h2 :id="index" class="text-xl pt-4">{{ header }}</h2>
+                <h2 :id="index" class="text-xl pt-16">{{ header }}</h2>
                 <p @mouseover="observerFn()">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni aut eaque enim cumque, aliquam delectus quaerat aperiam voluptatem. Quo nulla magni numquam facere facilis eum cupiditate tempora cum tempore porro.
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, harum distinctio? Natus fuga iste officiis odio cumque unde nihil facere aspernatur tempore incidunt quibusdam velit, suscipit ad iusto nobis iure eaque blanditiis. Repellat architecto, quae esse dicta unde dignissimos vitae voluptatibus et reiciendis recusandae blanditiis totam eos, possimus ut incidunt dolorem nemo! Odio ea esse ipsum, aperiam asperiores consequatur, voluptas reiciendis ut nobis dicta ipsam non quam animi, quia earum sequi.

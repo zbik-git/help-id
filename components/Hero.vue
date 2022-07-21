@@ -1,9 +1,9 @@
 <template>
-    <div class="wraper">
+    <div class="">
 
         <div class="grid grid-cols-12 pl-10 py-13 border-4 border-amber-500">
             
-            <div class="col-span-2 w-ful h-1/2">
+            <div class="col-span-2 w-ful h-3/4 overflow-y-auto mt-14">
                     <h1 class="text-3xl font-bold">Produkty </h1>
                 <ul class="p-8 text-xl">
                     <li>Lista produktów</li>
@@ -18,7 +18,7 @@
                 </ul>
             </div >
                 
-            <div class="col-span-10 w-full h-screen relative p-8 overflow-scroll">
+            <div class="col-span-10 w-full h-screen p-4 overflow-y-auto">
                 <div class="flex flex-col">
     
                     <Scroll />
