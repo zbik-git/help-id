@@ -1,32 +1,35 @@
 <template>
     <main class="w-11/12 mx-auto py-20">
         <article class="relative flex pb-40">
-            <div class="w-3/4">
-                <h1 class="text-xl">
+            <div v-if="articlesData" class="w-3/4">
+                <h1  class="text-xl">
                     Help
+                   
                 </h1>
-                <section v-for="(header, index) in headers" 
-                :key="header">
-                <h2 :id="index" class="text-xl pt-16">{{ header }}</h2>
-                <p @mouseover="observerFn()">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni aut eaque enim cumque, aliquam delectus quaerat aperiam voluptatem. Quo nulla magni numquam facere facilis eum cupiditate tempora cum tempore porro.
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, harum distinctio? Natus fuga iste officiis odio cumque unde nihil facere aspernatur tempore incidunt quibusdam velit, suscipit ad iusto nobis iure eaque blanditiis. Repellat architecto, quae esse dicta unde dignissimos vitae voluptatibus et reiciendis recusandae blanditiis totam eos, possimus ut incidunt dolorem nemo! Odio ea esse ipsum, aperiam asperiores consequatur, voluptas reiciendis ut nobis dicta ipsam non quam animi, quia earum sequi.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio adipisci, tempora error assumenda autem aliquid! Ad sequi harum culpa modi maiores. Ratione aliquam voluptatem assumenda consequuntur numquam enim distinctio architecto!
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus, voluptatem autem. Ex perspiciatis porro dolorem culpa a, vitae autem quod consectetur quibusdam repellat corporis facilis consequuntur nemo explicabo id necessitatibus distinctio mollitia assumenda rerum laudantium eius, voluptas itaque? Quibusdam error nostrum, vero minima inventore molestiae provident culpa distinctio perferendis dolorem! Aspernatur magni laudantium iusto nam natus voluptates libero itaque nemo aliquam quis veritatis accusantium dolor tempore deleniti odio tenetur doloremque, quae recusandae eius saepe alias nostrum. Velit fuga, culpa animi quia eveniet incidunt vel labore eaque impedit molestiae quo excepturi repellat, nostrum fugiat consequuntur doloribus tempora! Quibusdam perferendis delectus aspernatur, incidunt dolorem reprehenderit voluptatibus odit quos, nemo animi dolores ex ipsam accusamus qui ea. Laudantium illum optio blanditiis id obcaecati quae, ea nam doloribus maxime natus magni, debitis delectus veniam sunt distinctio facilis necessitatibus velit animi quod dolorum eos. Eveniet et dolorum hic pariatur accusantium aperiam reiciendis id laborum itaque explicabo unde odio, voluptates temporibus corrupti deleniti mollitia, repellat consequuntur nobis harum? Deserunt reiciendis libero tenetur nemo molestiae mollitia veritatis temporibus. Nulla dicta possimus totam, veritatis unde labore nemo pariatur deserunt dolores et suscipit ducimus, enim facilis blanditiis eius officia, qui similique error. Nisi fuga sunt atque optio fugiat impedit!
+               
+                <section v-for="(article, index) in articlesData.articlesList" 
+                :key="article.title">
+                <h2 :id="index" class="text-xl pt-16">{{ article.title }}</h2>
+               
+                        <p @mouseover="observerFn()">
+                           {{ article.content }}
+                           
+                        </p>
+
                     
-                </p>
-    
+
+
                 </section>
             </div>
             <aside class="w-1/4">
-                <div class="sticky top-[80px] pl-10">
+                <div v-if="articlesData" class="sticky top-[80px] pl-10">
                     
-                    <a class="block border-l-2 pl-2 space-y-2" v-for="(header, index) in headers" 
-                    :key="header" 
+                    <a class="block border-l-2 pl-2 space-y-2" v-for="(hd, index) in articlesData.articlesList" 
+                    :key="hd.id" 
                     :href="`#${index}`" 
                     :class="{ active:  (index)  == currentSection }"
                     >
-                    {{ header }}
+                    {{ hd.title }}
                     </a>
 
                 </div>
@@ -38,7 +41,10 @@
 
 <script setup>
 
+const articlesData = ref(null)
+
 const route = useRoute()
+
 const headers = [
     'Programowanie menu',
     'Dodanie kategorii',
@@ -67,9 +73,14 @@ function observerFn () {
         observer.observe(section)
     })
 }
+ const getData = async () => {
+    const resp = await fetch("/api/articles")
+    console.log(resp)
+    articlesData.value = await resp.json()
 
+ }
 
-//onMounted(observerFn)
+onMounted(getData)
 
 
 // watch(route.query, () => {
